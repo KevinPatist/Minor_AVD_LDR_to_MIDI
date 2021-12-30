@@ -1,1 +1,1 @@
-# Minor_AVD_LDR_to_MIDI
+# Minor AVD LDR to MIDI
