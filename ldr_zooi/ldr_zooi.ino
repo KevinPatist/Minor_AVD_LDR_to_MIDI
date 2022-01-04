@@ -1,4 +1,3 @@
-
 #include "MIDIUSB.h"
 
 // Pin Assignment
