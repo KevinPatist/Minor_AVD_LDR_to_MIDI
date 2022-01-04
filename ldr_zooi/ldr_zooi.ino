@@ -1,6 +1,12 @@
 
 #include "MIDIUSB.h"
+
+// Pin Assignment
+//==========================================
 int ldr_pin = A0; // the analog pin via which the ldr is connected to the arduino
+//==========================================
+
+// Variable creation
 int ldr_value = 0;
 int last_midi;
 int midi_from_ldr = 0;
@@ -23,11 +29,16 @@ void setup() {
 }
 
 void loop() {
-  // Reading the ldr value from ldr_pin
-  ldr_value = analogRead(ldr_pin);
+  // Sensor reading
+  //====================================
+  ldr_value = analogRead(ldr_pin); // Reading the ldr value from ldr_pin
+  //====================================
+  
   // Setting the previous MIDI note so we can compare later
   last_midi = midi_from_ldr;
-
+  
+  // MIDI Note Assignment
+  //==============================================================
   // Setting MIDI note based on ldr value
   // I divided the 0-1027 range into 7 segments because I have 7 scenes.
   if(ldr_value <= 147) {
@@ -45,6 +56,7 @@ void loop() {
   } else {
     midi_from_ldr = 70;
   }
+  //==============================================================
 
   // checking if the new MIDI note is the same as the last one that was sent
   if(midi_from_ldr != last_midi) {
